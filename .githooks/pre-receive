@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# An example hook script to make use of push options.
+# The example simply echoes all push options that start with 'echoback='
+# and rejects all pushes when the "reject" push option is used.
+#
+# To enable this hook, rename this file to "pre-receive".
+
+while read oval nval ref
+do
+    #echo "$oval -> $nval : $ref"
+	#echo START
+	CLINES=($(git rev-list --pretty=format:"%s" "$nval"))
+	if [[ ${CLINES[2]} =~ '^([A-Z]*-[0-9]*)' ]]; then
+	  echo "Jira Issue: ${BASH_REMATCH[1]}"
+	fi
+
+	echo "Oops ... You forgot to add a JIRA issue number!";
+	exit 1;
+done
+exit 0;
