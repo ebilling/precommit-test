@@ -5,7 +5,7 @@
 # Make sure to add execution permissions to the file.
 
 export MESSAGE=$(<$1)
-export JIRA_ISSUE_TAG='^([A-Z]*-[0-9]*)'
+export JIRA_ISSUE_TAG='^([A-Z]*-[0-9]*|merge)'
 
 if [[ $MESSAGE =~ $JIRA_ISSUE_TAG ]]; then
   echo "Jira Issue: ${BASH_REMATCH[1]}"
