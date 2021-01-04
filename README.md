@@ -2,3 +2,4 @@ Tested pre-commit hook it only runs locally and is not part of the repo.  what's
 
 Testing pre-receive hook again, and again
 
+Testing commit-msg using ~/.githooks
